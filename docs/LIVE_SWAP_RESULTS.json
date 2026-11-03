@@ -1,0 +1,372 @@
+{
+  "executedAt": "2026-10-20T10:23:47.990Z",
+  "origin": "http://127.0.0.1:8000",
+  "week": "2026-10-26",
+  "timezone": "Asia/Kolkata",
+  "userAuthorizedLiveOperation": true,
+  "approvedExchangeWillRemainSaved": true,
+  "results": [
+    {
+      "name": "Separate authenticated staff, colleague and supervisor sessions",
+      "status": "passed"
+    },
+    {
+      "name": "Exact discussed duties are eligible before any mutation",
+      "status": "passed"
+    },
+    {
+      "name": "Ananya submits a fresh request through the real React form",
+      "status": "passed"
+    },
+    {
+      "name": "Divya accepts from Incoming; neither assignment changes",
+      "status": "passed"
+    },
+    {
+      "name": "Supervisor reviews current checks and approves through Approval inbox",
+      "status": "passed"
+    },
+    {
+      "name": "Both saved assignment owners and versions changed together; other duties and slots are unchanged",
+      "status": "passed"
+    },
+    {
+      "name": "Approved request, timeline and before/after audit persist after reload",
+      "status": "passed"
+    },
+    {
+      "name": "New page loads show each incoming duty in the correct staff row",
+      "status": "passed"
+    },
+    {
+      "name": "Both participants have approval notices; hours and complete coverage are preserved",
+      "status": "passed"
+    }
+  ],
+  "screenshots": [
+    "live-swap/swap-00006-01-awaiting-colleague.png",
+    "live-swap/swap-00006-02-awaiting-supervisor.png",
+    "live-swap/swap-00006-03-before-approval.png",
+    "live-swap/swap-00006-04-approved.png",
+    "live-swap/swap-00006-05-roster-after-reload.png"
+  ],
+  "before": [
+    {
+      "assignmentId": "assignment-00013",
+      "staffId": "staff-1",
+      "name": "Ananya Krishnamurthy",
+      "version": 1,
+      "slotId": "slot-00007",
+      "date": "2026-10-27",
+      "block": "afternoon",
+      "lab": "lab-a",
+      "startsAt": "2026-10-27T07:30:00Z",
+      "endsAt": "2026-10-27T10:30:00Z"
+    },
+    {
+      "assignmentId": "assignment-00017",
+      "staffId": "staff-3",
+      "name": "Divya Nair",
+      "version": 1,
+      "slotId": "slot-00009",
+      "date": "2026-10-28",
+      "block": "morning",
+      "lab": "lab-a",
+      "startsAt": "2026-10-28T03:30:00Z",
+      "endsAt": "2026-10-28T06:30:00Z"
+    }
+  ],
+  "baselineRevision": 1,
+  "beforeRosterVersion": 2,
+  "requestId": "swap-00006",
+  "afterRequest": {
+    "status": "awaiting_colleague",
+    "version": 1,
+    "ownersUnchanged": true,
+    "revision": 2
+  },
+  "afterAcceptance": {
+    "status": "awaiting_supervisor",
+    "version": 2,
+    "ownersUnchanged": true,
+    "revision": 3
+  },
+  "finalValidationChecks": [
+    {
+      "code": "published",
+      "label": "Same published week",
+      "passed": true
+    },
+    {
+      "code": "different_people",
+      "label": "Two different staff members",
+      "passed": true
+    },
+    {
+      "code": "different_blocks",
+      "label": "Distinct, non-overlapping blocks",
+      "passed": true
+    },
+    {
+      "code": "future",
+      "label": "Both duties start in the future",
+      "passed": true
+    },
+    {
+      "code": "reservation",
+      "label": "Assignments are free of another pending exchange",
+      "passed": true
+    },
+    {
+      "code": "ownership",
+      "label": "Original ownership and versions match",
+      "passed": true
+    },
+    {
+      "code": "requester_eligible",
+      "label": "Requester can cover the colleague’s duty",
+      "passed": true
+    },
+    {
+      "code": "recipient_eligible",
+      "label": "Colleague can cover the requester’s duty",
+      "passed": true
+    },
+    {
+      "code": "coverage_0",
+      "label": "Coverage retained in LAB A 2026-10-27 afternoon",
+      "passed": true
+    },
+    {
+      "code": "coverage_1",
+      "label": "Coverage retained in LAB A 2026-10-28 morning",
+      "passed": true
+    }
+  ],
+  "afterApproval": {
+    "status": "approved",
+    "version": 3
+  },
+  "after": [
+    {
+      "assignmentId": "assignment-00013",
+      "staffId": "staff-3",
+      "name": "Divya Nair",
+      "version": 2,
+      "slotId": "slot-00007",
+      "date": "2026-10-27",
+      "block": "afternoon",
+      "lab": "lab-a",
+      "startsAt": "2026-10-27T07:30:00Z",
+      "endsAt": "2026-10-27T10:30:00Z"
+    },
+    {
+      "assignmentId": "assignment-00017",
+      "staffId": "staff-1",
+      "name": "Ananya Krishnamurthy",
+      "version": 2,
+      "slotId": "slot-00009",
+      "date": "2026-10-28",
+      "block": "morning",
+      "lab": "lab-a",
+      "startsAt": "2026-10-28T03:30:00Z",
+      "endsAt": "2026-10-28T06:30:00Z"
+    }
+  ],
+  "afterRosterVersion": 3,
+  "finalRevision": 4,
+  "timeline": [
+    {
+      "status": "awaiting_colleague",
+      "at": "2026-10-20T10:23:53Z",
+      "actorId": "staff-1",
+      "reason": "Request submitted; assignments remain unchanged."
+    },
+    {
+      "status": "awaiting_supervisor",
+      "at": "2026-10-20T10:24:05Z",
+      "actorId": "staff-3",
+      "reason": "Colleague accepted; assignments remain unchanged until supervisor approval."
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-20T10:24:06Z",
+      "actorId": "supervisor-1",
+      "reason": "The supervisor approved and both assignment owners were exchanged atomically."
+    }
+  ],
+  "audit": [
+    {
+      "id": "audit-00012",
+      "actorId": "staff-1",
+      "action": "swap.created",
+      "createdAt": "2026-10-20T10:23:53Z",
+      "details": {
+        "swapId": "swap-00006"
+      }
+    },
+    {
+      "id": "audit-00013",
+      "actorId": "staff-3",
+      "action": "swap.awaiting_supervisor",
+      "createdAt": "2026-10-20T10:24:05Z",
+      "details": {
+        "swapId": "swap-00006",
+        "reason": "Colleague accepted; assignments remain unchanged until supervisor approval."
+      }
+    },
+    {
+      "id": "audit-00014",
+      "actorId": "supervisor-1",
+      "action": "swap.approved",
+      "createdAt": "2026-10-20T10:24:06Z",
+      "details": {
+        "swapId": "swap-00006",
+        "reason": "The supervisor approved and both assignment owners were exchanged atomically."
+      }
+    },
+    {
+      "id": "audit-00015",
+      "actorId": "supervisor-1",
+      "action": "assignments.exchanged",
+      "createdAt": "2026-10-20T10:24:06Z",
+      "details": {
+        "swapId": "swap-00006",
+        "rosterId": "roster-00001",
+        "before": [
+          {
+            "assignmentId": "assignment-00013",
+            "staffId": "staff-1",
+            "name": "Ananya Krishnamurthy",
+            "qualification": "technician",
+            "slot": {
+              "date": "2026-10-27",
+              "block": "afternoon",
+              "lab": "lab-a",
+              "startsAt": "2026-10-27T07:30:00Z",
+              "endsAt": "2026-10-27T10:30:00Z",
+              "id": "slot-00007",
+              "rosterId": "roster-00001",
+              "headcount": 2,
+              "technicianMinimum": 1
+            }
+          },
+          {
+            "assignmentId": "assignment-00017",
+            "staffId": "staff-3",
+            "name": "Divya Nair",
+            "qualification": "technician",
+            "slot": {
+              "date": "2026-10-28",
+              "block": "morning",
+              "lab": "lab-a",
+              "startsAt": "2026-10-28T03:30:00Z",
+              "endsAt": "2026-10-28T06:30:00Z",
+              "id": "slot-00009",
+              "rosterId": "roster-00001",
+              "headcount": 2,
+              "technicianMinimum": 1
+            }
+          }
+        ],
+        "after": [
+          {
+            "assignmentId": "assignment-00013",
+            "staffId": "staff-3",
+            "name": "Divya Nair",
+            "qualification": "technician",
+            "slot": {
+              "date": "2026-10-27",
+              "block": "afternoon",
+              "lab": "lab-a",
+              "startsAt": "2026-10-27T07:30:00Z",
+              "endsAt": "2026-10-27T10:30:00Z",
+              "id": "slot-00007",
+              "rosterId": "roster-00001",
+              "headcount": 2,
+              "technicianMinimum": 1
+            }
+          },
+          {
+            "assignmentId": "assignment-00017",
+            "staffId": "staff-1",
+            "name": "Ananya Krishnamurthy",
+            "qualification": "technician",
+            "slot": {
+              "date": "2026-10-28",
+              "block": "morning",
+              "lab": "lab-a",
+              "startsAt": "2026-10-28T03:30:00Z",
+              "endsAt": "2026-10-28T06:30:00Z",
+              "id": "slot-00009",
+              "rosterId": "roster-00001",
+              "headcount": 2,
+              "technicianMinimum": 1
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "hours": [
+    {
+      "staffId": "staff-1",
+      "name": "Ananya Krishnamurthy",
+      "before": 12,
+      "after": 12
+    },
+    {
+      "staffId": "staff-3",
+      "name": "Divya Nair",
+      "before": 9,
+      "after": 9
+    }
+  ],
+  "coverage": {
+    "affected": [
+      {
+        "slotId": "slot-00007",
+        "date": "2026-10-27",
+        "block": "afternoon",
+        "lab": "lab-a",
+        "headcount": 2,
+        "assigned": 2,
+        "technicianMinimum": 1,
+        "technicians": 1,
+        "missingPeople": 0,
+        "missingTechnicians": 0
+      },
+      {
+        "slotId": "slot-00009",
+        "date": "2026-10-28",
+        "block": "morning",
+        "lab": "lab-a",
+        "headcount": 2,
+        "assigned": 2,
+        "technicianMinimum": 1,
+        "technicians": 1,
+        "missingPeople": 0,
+        "missingTechnicians": 0
+      }
+    ],
+    "totalsBefore": {
+      "hours": 120,
+      "duties": 40,
+      "required": 40,
+      "assigned": 40,
+      "missingPeople": 0,
+      "missingTechnicians": 0
+    },
+    "totalsAfter": {
+      "hours": 120,
+      "duties": 40,
+      "required": 40,
+      "assigned": 40,
+      "missingPeople": 0,
+      "missingTechnicians": 0
+    }
+  },
+  "status": "passed",
+  "pageErrors": [],
+  "finishedAt": "2026-10-20T10:24:20.499Z"
+}

@@ -1,0 +1,78 @@
+{
+  "command": "node tests/e2e/http.mjs",
+  "at": "2026-11-03T02:59:04.047Z",
+  "results": [
+    {
+      "name": "Unauthenticated API fails with JSON 401",
+      "status": "passed"
+    },
+    {
+      "name": "Success and error metadata use the configured server clock",
+      "status": "passed"
+    },
+    {
+      "name": "Login rejects missing CSRF before authenticating",
+      "status": "passed"
+    },
+    {
+      "name": "Invalid credentials retain email and expose no password",
+      "status": "passed"
+    },
+    {
+      "name": "Malformed array query parameters return clean JSON validation errors",
+      "status": "passed"
+    },
+    {
+      "name": "Invalid mutation CSRF preserves exact business snapshot",
+      "status": "passed"
+    },
+    {
+      "name": "Staff cannot forge supervisor role or another availability owner",
+      "status": "passed"
+    },
+    {
+      "name": "Normal PHP availability form saves without JavaScript",
+      "status": "passed"
+    },
+    {
+      "name": "Availability API and PHP forms reject stale tabs and preserve unsaved choices",
+      "status": "passed"
+    },
+    {
+      "name": "Staff bootstrap excludes other private availability, emails and hashes",
+      "status": "passed"
+    },
+    {
+      "name": "GET bootstrap, reports, candidates and session never rewrite business state",
+      "status": "passed"
+    },
+    {
+      "name": "Automatic preview and report requests never advance idle activity during other users writes",
+      "status": "passed"
+    },
+    {
+      "name": "Draft gap repairs, optimistic versions and publication persist through HTTP",
+      "status": "passed"
+    },
+    {
+      "name": "Request and colleague acceptance preserve roster; approval exchanges exactly once",
+      "status": "passed"
+    },
+    {
+      "name": "Report CSV matches filtered JSON and staff export excludes colleagues",
+      "status": "passed"
+    },
+    {
+      "name": "Notification ownership, logout and server-enforced idle expiry",
+      "status": "passed"
+    },
+    {
+      "name": "Password resets invalidate old sessions and oversized suffix variants cannot authenticate",
+      "status": "passed"
+    },
+    {
+      "name": "No PHP runtime warnings",
+      "status": "passed"
+    }
+  ]
+}

@@ -1,0 +1,194 @@
+{
+  "results": [
+    {
+      "name": "Dirty roster values retain their original version after another session saves and automatic polling rejects the stale write",
+      "status": "passed"
+    },
+    {
+      "name": "A saved roster baseline uses the mutation version when bootstrap fails, and input is locked during the in-flight save",
+      "status": "passed"
+    },
+    {
+      "name": "Manual refresh updates an open filtered report after another session approves a cross-lab swap and agrees exactly with CSV",
+      "status": "passed"
+    },
+    {
+      "name": "Old report responses cannot overwrite newer laboratory filters and report errors preserve filters while disabling exports until retry",
+      "status": "passed"
+    },
+    {
+      "name": "Automatic revision-driven preview and report reads use background headers, retain focus and do not keep idle sessions alive",
+      "status": "passed"
+    },
+    {
+      "name": "Two real availability tabs reject different-cell and same-cell stale saves without undoing the first tab",
+      "status": "passed"
+    },
+    {
+      "name": "Report refresh and route cleanup produce no unhandled page errors or PHP warnings",
+      "status": "passed"
+    }
+  ],
+  "pageErrors": [],
+  "automaticRequests": [
+    {
+      "action": "bootstrap",
+      "background": true,
+      "trigger": "automatic"
+    },
+    {
+      "action": "preview",
+      "background": true,
+      "trigger": "automatic"
+    },
+    {
+      "action": "bootstrap",
+      "background": true,
+      "trigger": "automatic"
+    },
+    {
+      "action": "report",
+      "background": true,
+      "trigger": "automatic"
+    },
+    {
+      "action": "bootstrap",
+      "background": true,
+      "trigger": "automatic"
+    },
+    {
+      "action": "preview",
+      "background": true,
+      "trigger": "automatic"
+    },
+    {
+      "action": "bootstrap",
+      "background": true,
+      "trigger": "automatic"
+    },
+    {
+      "action": "report",
+      "background": true,
+      "trigger": "automatic"
+    },
+    {
+      "action": "bootstrap",
+      "background": true,
+      "trigger": "automatic"
+    },
+    {
+      "action": "preview",
+      "background": true,
+      "trigger": "automatic"
+    },
+    {
+      "action": "bootstrap",
+      "background": true,
+      "trigger": "automatic"
+    },
+    {
+      "action": "report",
+      "background": true,
+      "trigger": "automatic"
+    },
+    {
+      "action": "bootstrap",
+      "background": false,
+      "trigger": "user"
+    },
+    {
+      "action": "report",
+      "background": false,
+      "trigger": "user"
+    },
+    {
+      "action": "bootstrap",
+      "background": true,
+      "trigger": "automatic"
+    },
+    {
+      "action": "bootstrap",
+      "background": true,
+      "trigger": "automatic"
+    }
+  ],
+  "browser": "155.0.8059.85",
+  "isolatedStore": true,
+  "executedAt": "2026-10-21T13:43:17.403Z",
+  "counts": {
+    "passed": 7,
+    "failed": 0
+  },
+  "build": {
+    "tool": "Vite 7.3.7",
+    "modules": 1599,
+    "asset": "public/build/assets/main-CcinXWQc.js",
+    "bytes": 349100,
+    "gzipBytes": 107263,
+    "status": "passed"
+  },
+  "commands": [
+    {
+      "cwd": "frontend",
+      "command": "../scripts/npm.ps1 run build",
+      "status": "passed"
+    },
+    {
+      "cwd": "frontend",
+      "command": "node node_modules/prettier/bin/prettier.cjs --check src vite.config.js package.json ../tests/e2e/regressions.mjs",
+      "status": "passed"
+    },
+    {
+      "cwd": "frontend",
+      "command": "node --check src/hooks/useApi.js",
+      "status": "passed"
+    },
+    {
+      "cwd": "frontend",
+      "command": "node --check src/services/api.js",
+      "status": "passed"
+    },
+    {
+      "cwd": "frontend",
+      "command": "node --check src/utils/dates.js",
+      "status": "passed"
+    },
+    {
+      "cwd": "frontend",
+      "command": "node --check ../tests/e2e/regressions.mjs",
+      "status": "passed"
+    },
+    {
+      "cwd": ".",
+      "command": "node tests/e2e/regressions.mjs",
+      "status": "passed"
+    }
+  ],
+  "standaloneLint": {
+    "status": "not_configured",
+    "detail": "No ESLint script or configuration exists. The production JSX build, JavaScript syntax checks, Prettier check and React skill checklist were completed."
+  },
+  "activitySummary": {
+    "automatic": 14,
+    "automaticWithBackgroundHeader": 14,
+    "userInitiated": 2,
+    "userInitiatedForeground": 2
+  },
+  "changedSource": [
+    "frontend/src/App.jsx",
+    "frontend/src/components/Roster.jsx",
+    "frontend/src/hooks/useApi.js",
+    "frontend/src/pages/Reports.jsx",
+    "frontend/src/pages/Swaps.jsx",
+    "tests/e2e/regressions.mjs"
+  ],
+  "review": [
+    "Editable values and version share one snapshot; stale writes preserve input and require explicit reload.",
+    "Returned mutation versions establish baselines even if bootstrap fails; inputs are disabled while saving.",
+    "Initial navigation, filter changes, manual refresh and retry are foreground; revision-driven dependent reads are background.",
+    "Request cancellation, sequence checks and deferred once-only invalidation prevent old results and refresh loops.",
+    "Reports keep filters and loading/error states; stale snapshots cannot be exported or printed after a failed refresh.",
+    "Queued Canvas resize callbacks safely ignore an unmounted chart."
+  ],
+  "isolation": "Generated synthetic credentials and unique temporary state/sessions only. The supplied operational store was not used. Temporary server and fixture directory were removed."
+}

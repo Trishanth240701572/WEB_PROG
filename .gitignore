@@ -1,0 +1,14 @@
+/storage/*
+!/storage/.gitkeep
+!/storage/.htaccess
+/config/local.php
+/frontend/node_modules/
+/public/build/
+/.tools/
+/tests/.tmp/
+/tests/e2e/.auth/
+*.log
+*.tmp
+*.bak
+.DS_Store
+Thumbs.db

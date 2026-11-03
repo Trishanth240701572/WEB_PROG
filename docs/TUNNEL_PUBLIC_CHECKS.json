@@ -1,0 +1,214 @@
+{
+  "origin": "https://circuits-foster-ability-tournament.trycloudflare.com",
+  "checkedAtUtc": "2026-10-21T12:04:05.6030169Z",
+  "scope": "External unauthenticated HTTPS GETs only. No login, API mutations, business record reads or process control. Private responses inspected by status only; response bodies were not read.",
+  "initialCheck": {
+    "finding": "PHP development-server fallback returned introduction HTTP200 for nonexistent sibling paths; root replaced the dedicated origin with a bounded development router before this final recheck.",
+    "passed": 16,
+    "failed": 10
+  },
+  "passed": 26,
+  "failed": 0,
+  "results": [
+    {
+      "path": "/",
+      "kind": "public",
+      "expectedStatus": 200,
+      "status": 200,
+      "passed": true,
+      "contentType": "text/html; charset=UTF-8"
+    },
+    {
+      "path": "/login.php",
+      "kind": "public",
+      "expectedStatus": 200,
+      "status": 200,
+      "passed": true,
+      "contentType": "text/html; charset=UTF-8"
+    },
+    {
+      "path": "/assets/mark.svg",
+      "kind": "public",
+      "expectedStatus": 200,
+      "status": 200,
+      "passed": true,
+      "contentType": "image/svg+xml"
+    },
+    {
+      "path": "/assets/vendor/bootstrap.min.css",
+      "kind": "public",
+      "expectedStatus": 200,
+      "status": 200,
+      "passed": true,
+      "contentType": "text/css; charset=UTF-8"
+    },
+    {
+      "path": "/assets/vendor/bootstrap.bundle.min.js",
+      "kind": "public",
+      "expectedStatus": 200,
+      "status": 200,
+      "passed": true,
+      "contentType": "application/javascript"
+    },
+    {
+      "path": "/assets/css/app.css",
+      "kind": "public",
+      "expectedStatus": 200,
+      "status": 200,
+      "passed": true,
+      "contentType": "text/css; charset=UTF-8"
+    },
+    {
+      "path": "/assets/css/php.css",
+      "kind": "public",
+      "expectedStatus": 200,
+      "status": 200,
+      "passed": true,
+      "contentType": "text/css; charset=UTF-8"
+    },
+    {
+      "path": "/assets/css/tokens.css",
+      "kind": "public",
+      "expectedStatus": 200,
+      "status": 200,
+      "passed": true,
+      "contentType": "text/css; charset=UTF-8"
+    },
+    {
+      "path": "/assets/js/boot.js",
+      "kind": "public",
+      "expectedStatus": 200,
+      "status": 200,
+      "passed": true,
+      "contentType": "application/javascript"
+    },
+    {
+      "path": "/assets/js/availability.js",
+      "kind": "public",
+      "expectedStatus": 200,
+      "status": 200,
+      "passed": true,
+      "contentType": "application/javascript"
+    },
+    {
+      "path": "/build/.vite/manifest.json",
+      "kind": "public",
+      "expectedStatus": 200,
+      "status": 200,
+      "passed": true,
+      "contentType": "application/json"
+    },
+    {
+      "path": "/app.php",
+      "kind": "protected-page",
+      "expectedStatus": 303,
+      "status": 303,
+      "passed": true,
+      "contentType": "text/html; charset=UTF-8",
+      "location": "/login.php"
+    },
+    {
+      "path": "/availability.php",
+      "kind": "protected-page",
+      "expectedStatus": 303,
+      "status": 303,
+      "passed": true,
+      "contentType": "text/html; charset=UTF-8",
+      "location": "/login.php"
+    },
+    {
+      "path": "/api/index.php",
+      "kind": "protected-json",
+      "expectedStatus": 401,
+      "status": 401,
+      "passed": true,
+      "contentType": "application/json; charset=utf-8"
+    },
+    {
+      "path": "/reports/export.php?type=workload&week=2026-10-26",
+      "kind": "protected-json",
+      "expectedStatus": 401,
+      "status": 401,
+      "passed": true,
+      "contentType": "application/json; charset=utf-8"
+    },
+    {
+      "path": "/storage/state.json",
+      "kind": "private",
+      "expectedStatus": 404,
+      "status": 404,
+      "passed": true
+    },
+    {
+      "path": "/storage/demo-credentials.txt",
+      "kind": "private",
+      "expectedStatus": 404,
+      "status": 404,
+      "passed": true
+    },
+    {
+      "path": "/storage/state.lock",
+      "kind": "private",
+      "expectedStatus": 404,
+      "status": 404,
+      "passed": true
+    },
+    {
+      "path": "/storage/sessions/",
+      "kind": "private",
+      "expectedStatus": 404,
+      "status": 404,
+      "passed": true
+    },
+    {
+      "path": "/config/local.php",
+      "kind": "private",
+      "expectedStatus": 404,
+      "status": 404,
+      "passed": true
+    },
+    {
+      "path": "/src/Auth.php",
+      "kind": "private",
+      "expectedStatus": 404,
+      "status": 404,
+      "passed": true
+    },
+    {
+      "path": "/scripts/seed-demo.php",
+      "kind": "private",
+      "expectedStatus": 404,
+      "status": 404,
+      "passed": true
+    },
+    {
+      "path": "/.tools/php/php.exe",
+      "kind": "private",
+      "expectedStatus": 404,
+      "status": 404,
+      "passed": true
+    },
+    {
+      "path": "/frontend/package.json",
+      "kind": "private",
+      "expectedStatus": 404,
+      "status": 404,
+      "passed": true
+    },
+    {
+      "path": "/AGENTS.md",
+      "kind": "private",
+      "expectedStatus": 404,
+      "status": 404,
+      "passed": true
+    },
+    {
+      "path": "/build/assets/main-Ch5PC_a6.js",
+      "kind": "public-built-js",
+      "expectedStatus": 200,
+      "status": 200,
+      "passed": true,
+      "contentType": "application/javascript"
+    }
+  ]
+}

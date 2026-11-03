@@ -1,0 +1,57 @@
+{
+  "results": [
+    {
+      "name": "Representative public/PHP/React pages have no unexpected console errors or failed assets",
+      "status": "passed"
+    },
+    {
+      "name": "An ambiguous network mutation failure is sent once without automatic replay or session refresh",
+      "status": "passed"
+    },
+    {
+      "name": "A storage 503 mutation response is sent once without automatic replay or session refresh",
+      "status": "passed"
+    }
+  ],
+  "widths": [
+    {
+      "viewport": 320,
+      "text": 83.43359375,
+      "available": 185
+    },
+    {
+      "viewport": 375,
+      "text": 83.43359375,
+      "available": 232
+    },
+    {
+      "viewport": 390,
+      "text": 83.43359375,
+      "available": 111.25
+    }
+  ],
+  "events": [
+    {
+      "kind": "console.error",
+      "phase": "expected_network_abort",
+      "message": "Failed to load resource: net::ERR_CONNECTION_FAILED"
+    },
+    {
+      "kind": "http",
+      "phase": "expected_503",
+      "status": 503,
+      "path": "/api/index.php"
+    },
+    {
+      "kind": "console.error",
+      "phase": "expected_503",
+      "message": "Failed to load resource: the server responded with a status of 503 (Service Unavailable)"
+    }
+  ],
+  "expectedFaults": [
+    "One deliberately aborted notification mutation",
+    "One deliberately fulfilled 503 notification mutation"
+  ],
+  "liveStoreUntouched": true,
+  "executedAt": "2026-11-03T02:59:55.401Z"
+}

@@ -1,0 +1,132 @@
+Fix the following issues in the attached ShiftSync PHP/React project. Make the actual code changes and add regression tests—not just recommendations.
+
+First inspect the relevant files and confirm the affected code paths. Preserve the existing architecture, UI, role permissions, transactional JSON storage, and API conventions. Avoid unrelated refactoring.
+
+1. Prevent stale roster edits from overwriting newer changes
+
+Relevant files:
+- frontend/src/components/Roster.jsx
+- frontend/src/App.jsx
+
+Problem:
+The roster editor initializes local values such as headcount and technicianMinimum from an earlier snapshot. Background refreshes can update roster.version without updating those local values. Saving then submits stale values with the latest version, allowing an unintended overwrite.
+
+Required fix:
+- Keep the editable values and their base version tied to the same snapshot.
+- Do not advance the base version while the form contains unsaved changes.
+- When newer server data arrives, preserve unsaved input and show a clear conflict/reload notice.
+- Submit the version associated with the user's editing snapshot.
+- Handle HTTP 409/stale_version visibly without discarding the user's work.
+- Establish a new baseline after a successful save or an explicit reload.
+
+Regression test:
+Two sessions edit the same roster block. After one saves, an automatic refresh in the other must not allow its stale form to overwrite that change silently.
+
+2. Add stale-edit protection to availability saves
+
+Relevant files:
+- src/Domain.php
+- public/availability.php
+- public/api/index.php
+- Any React components or API clients that save availability
+
+Problem:
+Saving a whole week from an older form can undo availability changes made in another tab. File locking prevents file corruption but does not prevent stale-client overwrites.
+
+Required fix:
+- Add optimistic concurrency protection, preferably a version per staff member and week, or an equivalent original-value comparison.
+- Perform the conflict check and write atomically inside the existing transaction.
+- Update every affected form and API client to supply the concurrency information.
+- Reject stale writes with HTTP 409 and a helpful message.
+- Ensure missing concurrency information cannot silently bypass protection.
+- Preserve compatibility with existing stored data through safe version initialization.
+- Do not treat sending only changed cells as sufficient protection against conflicting edits to the same cell.
+
+Regression test:
+Two tabs load the same week. Tab A changes Monday and saves. Tab B changes Tuesday from its older snapshot. Its save must either be rejected clearly or safely merge nonconflicting changes; it must never silently restore Monday's previous value. Also test conflicting edits to the same cell.
+
+3. Align password validation with the hashing algorithm
+
+Relevant files:
+- scripts/create-user.php
+- src/Auth.php
+- Any other password creation or update paths
+
+Problem:
+Account creation accepts passwords up to 128 bytes. On the reviewed runtime, PASSWORD_DEFAULT selected bcrypt, which only considers the first 72 bytes. Two passwords sharing that prefix authenticated despite having different suffixes.
+
+Required fix:
+- Choose and document a consistent password-hashing policy.
+- Either use Argon2id after checking runtime support, or explicitly enforce bcrypt's 72-byte maximum wherever bcrypt passwords are created or changed.
+- Account for byte length, including multibyte characters.
+- Keep provisioning, authentication, and validation messages consistent.
+- Handle existing hashes deliberately. Do not silently lock out existing users, weaken verification, or claim rehashing can recover a previously discarded suffix.
+- Document any necessary password-reset or migration steps.
+
+Regression tests:
+Cover supported password lengths, oversized inputs, multibyte inputs, existing hashes, and passwords sharing the first 72 bytes but differing afterwards.
+
+4. Make report refreshes update report data
+
+Relevant files:
+- frontend/src/pages/Reports.jsx
+- frontend/src/App.jsx
+- frontend/src/components/AppLayout.jsx
+- frontend/src/hooks/useApi.js
+
+Problem:
+“Refresh saved records” refreshes bootstrap data but not the separately fetched report. The visible report can remain stale after a swap approval and disagree with a newly downloaded CSV.
+
+Required fix:
+- Make the refresh action refresh the active report as well.
+- Invalidate or refresh relevant reports when underlying business data changes.
+- Preserve filters, loading states, and error handling.
+- Avoid request loops and older responses overwriting newer results.
+- Mark automatic refetches as background requests using the existing mechanism.
+
+Regression test:
+Keep a report open, change its underlying records in another session, and refresh. Verify the report updates and agrees with an export generated from the same data and filters.
+
+5. Stop automatic preview refetches from extending idle sessions
+
+Relevant files:
+- frontend/src/pages/Swaps.jsx
+- frontend/src/hooks/useApi.js
+- public/api/index.php
+- src/Auth.php
+
+Problem:
+A business revision change triggers a swap-preview request that defaults to foreground activity. Other users' writes can therefore extend the session of an unattended page.
+
+Required fix:
+- Distinguish genuine user actions from automatic dependent requests.
+- Pass the existing background-refresh flag through automatically triggered preview and report requests.
+- Ensure those requests do not update server-side lastActivity.
+- Preserve normal user-initiated activity handling and the absolute session timeout.
+
+Regression test:
+Simulate repeated revision changes from another user while the first user's page is idle. Automatic requests must not advance that user's lastActivity or prevent idle expiry.
+
+6. Make release packaging safe
+
+Problem:
+The supplied ZIP includes runtime state, backups, a plaintext demo-credentials receipt, and PHP session files. Git ignore rules do not prevent these from entering manually created ZIPs.
+
+Required fix:
+- Add a reproducible release-packaging script or documented command.
+- Exclude runtime state, backups, credential receipts, sessions, local secrets, and unnecessary installed dependencies.
+- Retain required source files, lockfiles, approved fixtures, and required build assets.
+- Do not delete existing operational data as part of this fix.
+- Do not print secrets in logs, tests, or the final response.
+- Document credential rotation and session invalidation for any deployment that used the included credentials or session state.
+
+Validation and deliverables:
+- Add regression tests for the fixes above.
+- Run the existing backend, HTTP integration, and subdirectory-routing suites.
+- Run PHP syntax checks and the frontend build.
+- Run lint and frontend/browser tests where available.
+- Use isolated test storage; do not modify the supplied operational store.
+- Report exactly which checks ran, their results, and anything blocked by the environment.
+- Do not claim unexecuted tests passed.
+
+Return the patched project or a unified diff, a list of changed files, a brief explanation of each fix, and any deployment or migration steps.

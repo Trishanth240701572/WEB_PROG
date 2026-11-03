@@ -1,0 +1,59 @@
+{
+  "scope": "Focused availability concurrency, password policy and background-session regressions",
+  "storage": "All executed workflow tests used isolated synthetic temporary stores and sessions. Operational state, credentials and sessions were not accessed or changed.",
+  "results": [
+    {
+      "command": ".tools/php/php.exe tests/run.php",
+      "passed": 30,
+      "failed": 0,
+      "checks": [
+        "Legacy availability snapshots project version zero without rewriting reads",
+        "Missing or non-integer versions cannot bypass concurrency checks",
+        "Older full-week edits and same-cell edits fail atomically without restoring earlier choices",
+        "Explicit bcrypt creation/reset policy accepts 12 through 72 bytes, including multibyte input",
+        "Oversized and null-byte passwords are rejected",
+        "Existing supported hashes and short legacy passwords remain verifiable",
+        "Passwords differing within byte 72 are distinct; overlong shared-prefix suffix variants are rejected",
+        "CLI reset preserves state on invalid input and advances credential versions on success",
+        "Existing coverage, permissions, atomic approval, persistence and independent concurrency checks"
+      ]
+    },
+    {
+      "command": "node tests/e2e/http.mjs",
+      "passed": 18,
+      "failed": 0,
+      "checks": [
+        "Native PHP availability includes and submits the editing version",
+        "HTTP 409 retains the old version and unsaved form selections",
+        "Missing-version API and ordinary form submissions fail without business writes",
+        "Repeated automatic preview, bootstrap and report reads preserve lastActivity across other users' revisions",
+        "Foreground activity still updates lastActivity; idle and absolute expiry still reject unattended requests",
+        "Password reset invalidates existing authenticated sessions and the new supported password signs in",
+        "Oversized shared-prefix variants fail authentication with reset guidance",
+        "Existing authentication, CSRF, publication, swap approval and export flows"
+      ]
+    },
+    {
+      "command": "node tests/e2e/subdirectory.mjs",
+      "passed": 8,
+      "failed": 0,
+      "limitation": "PHP router simulates an Apache Alias; it does not claim Apache configuration or browser JavaScript execution."
+    },
+    {
+      "command": "$php = '.tools/php/php.exe'; $files = Get-ChildItem src,public,scripts,tests,config -Filter *.php -Recurse | Where-Object { $_.FullName -notmatch '\\\\tests\\\\\\.tmp\\\\' }; $failed = 0; foreach ($file in $files) { & $php -l $file.FullName | Out-Null; if ($LASTEXITCODE -ne 0) { $failed++; Write-Output $file.FullName } }; Write-Output ('PHP syntax: ' + $files.Count + ' source files; failures=' + $failed); if ($failed -ne 0) { exit 1 }",
+      "passed": 35,
+      "failed": 0,
+      "scope": "PHP source beneath src, public, scripts, tests and config; disposable tests/.tmp and its source-baseline copies excluded. node_modules and .tools are outside these roots."
+    }
+  ],
+  "correctedVerificationIssues": [
+    "The first HTTP invocation caught a missing closing brace in a new test helper before running; the helper was fixed and the complete final HTTP run passed.",
+    "The first broad lint enumeration crossed a disposable test router while the independent suite removed it. The final source-only lint excluded tests/.tmp and passed."
+  ],
+  "compatibility": {
+    "availability": "Optional availabilityVersions[staffId][Monday] metadata defaults to zero on read and initializes only in an accepted transaction. All saves now require the integer base version. Old open forms must reload.",
+    "passwords": "New and reset passwords use explicit bcrypt cost 12 and require 12–72 bytes without null bytes. Existing hashes are not automatically rewritten. Existing shorter passwords remain usable. Inputs over 72 bytes require an explicit reset because bcrypt cannot recover a previously discarded suffix.",
+    "resetCommand": "php scripts/reset-password.php --email ACCOUNT_EMAIL --password-stdin",
+    "sessionInvalidation": "Explicit reset increments credentialVersion. Existing records and sessions default to zero; a version mismatch requires sign-in on the next request. No session files are deleted by migration."
+  }
+}

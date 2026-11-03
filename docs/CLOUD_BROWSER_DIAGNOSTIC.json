@@ -1,0 +1,14 @@
+{
+  "checkedAt": "2026-10-21T12:18:57.313Z",
+  "scope": "Anonymous local Chrome over the public HTTPS tunnel; this is not the user ChatGPT cloud computer",
+  "url": "https://circuits-foster-ability-tournament.trycloudflare.com/login.php",
+  "status": 200,
+  "passwordFieldCount": 1,
+  "blockedMessage": false,
+  "cloudflareChallenge": false,
+  "pageErrors": [],
+  "failedResponses": [],
+  "submittedCredentials": false,
+  "screenshot": "docs/screenshots/cloudflare-block-diagnostic.png",
+  "businessStateUnchanged": true
+}

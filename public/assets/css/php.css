@@ -1,0 +1,514 @@
+.public-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 28px;
+  padding-bottom: 28px;
+  gap: 16px;
+}
+.public-main {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: 64px;
+  align-items: center;
+  min-height: 72vh;
+  padding-block: 64px;
+}
+.public-title {
+  font-size: clamp(2.6rem, 5.6vw, 5.3rem);
+  line-height: 1.06;
+  letter-spacing: -0.06em;
+  margin: 24px 0;
+}
+.public-copy {
+  font-size: 1.15rem;
+  color: var(--color-muted);
+  max-width: 480px;
+  line-height: 1.7;
+  margin-bottom: 28px;
+}
+.public-context {
+  font-size: 13px;
+  margin-top: 24px;
+}
+.public-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  border-top: 1px solid var(--color-border);
+  padding-top: 24px;
+  padding-bottom: 24px;
+  color: var(--color-muted);
+  font-size: 13px;
+}
+.workflow-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.workflow-list li {
+  display: flex;
+  gap: 20px;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+.workflow-list h3 {
+  font-size: 17px;
+  margin: 0 0 8px;
+}
+.workflow-list p {
+  color: var(--color-muted);
+  font-size: 15px;
+  line-height: 1.7;
+  margin: 0;
+}
+.workflow-number {
+  color: var(--color-accent-soft, var(--color-muted));
+  font-variant-numeric: tabular-nums;
+}
+.intro-note {
+  padding-top: 24px;
+  color: var(--color-muted);
+  font-size: 13px;
+}
+.intro-workflow > .panel-head {
+  padding-inline: 0;
+}
+.intro-workflow h2 {
+  font-size: 20px;
+  max-width: 260px;
+}
+.auth-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 440px);
+  gap: 96px;
+  align-items: center;
+  min-height: 75vh;
+  padding-block: 48px;
+}
+.auth-story h1 {
+  font-size: clamp(2.8rem, 5vw, 4.6rem);
+  line-height: 1.08;
+  letter-spacing: -0.05em;
+  margin: 24px 0;
+}
+.auth-story > p {
+  color: var(--color-muted);
+  max-width: 400px;
+  font-size: 17px;
+  line-height: 1.75;
+}
+.auth-story-rule {
+  width: 48px;
+  border-bottom: 2px solid var(--color-accent);
+  margin: 32px 0;
+}
+.auth-card h2 {
+  font-size: 28px;
+  letter-spacing: -0.03em;
+  margin: 12px 0;
+}
+.auth-card .panel-body {
+  padding: 36px;
+}
+.login-form {
+  margin-top: 28px;
+}
+.login-form .field {
+  margin-bottom: 20px;
+}
+.auth-submit {
+  width: 100%;
+  margin-top: 8px;
+  justify-content: space-between;
+}
+.auth-help {
+  font-size: 13px;
+  margin-top: 24px;
+}
+.auth-demo-note {
+  border-top: 1px solid var(--color-border);
+  padding-top: 20px;
+  margin-top: 24px;
+  color: var(--color-muted);
+  font-size: 12px;
+  line-height: 1.65;
+}
+.sidebar-bottom {
+  margin-top: auto;
+  padding-top: 32px;
+}
+.sidebar-bottom .user-chip {
+  margin-block: 20px;
+}
+.user-chip small {
+  display: block;
+  color: var(--color-muted);
+  font-size: 12px;
+  margin-top: 4px;
+}
+.php-sidebar .sidebar-label {
+  color: var(--color-muted);
+  font-size: 11px;
+  margin: 36px 12px 12px;
+  letter-spacing: 0.08em;
+}
+.availability-page {
+  max-width: 1500px;
+}
+.week-select-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: end;
+  margin: 24px 0;
+}
+.week-select-form > .muted {
+  align-self: center;
+  padding-top: 22px;
+}
+.availability-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--color-border);
+}
+.availability-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+.availability-day {
+  min-width: 0;
+  padding: 24px 16px;
+  border: 0;
+  border-right: 1px solid var(--color-border);
+}
+.availability-day:last-child {
+  border: 0;
+}
+.availability-day legend {
+  font-size: 15px;
+  float: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 0 0 20px;
+}
+.availability-day legend > .muted {
+  font-size: 13px;
+}
+.availability-cell {
+  margin: 0 0 20px;
+}
+.availability-cell label {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 12px;
+}
+.availability-cell label strong {
+  font-size: 14px;
+}
+.availability-cell label .muted {
+  font-size: 12px;
+}
+.availability-cell .form-select {
+  font-size: 13px;
+  min-height: 44px;
+  padding-left: 10px;
+}
+.availability-cell[data-state="available"] {
+  border-left: 2px solid var(--color-success);
+  padding-left: 10px;
+}
+.availability-cell[data-state="unavailable"] {
+  border-left: 2px solid var(--color-muted);
+  padding-left: 10px;
+}
+.availability-save {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 24px;
+  border-top: 1px solid var(--color-border);
+}
+.availability-save p {
+  margin: 0;
+  font-size: 14px;
+}
+.availability-help {
+  max-width: 720px;
+  margin-top: 32px;
+  color: var(--color-muted);
+  font-size: 14px;
+  line-height: 1.7;
+}
+.availability-help h2 {
+  font-size: 17px;
+  color: var(--color-text);
+}
+.no-js .js-only {
+  display: none !important;
+}
+.no-js .collapse {
+  display: block;
+}
+.app-starting {
+  padding: 48px;
+  color: var(--color-muted);
+}
+.notice p:last-child {
+  margin-bottom: 0;
+}
+.public-header .brand img {
+  flex: none;
+}
+.public-title,
+.auth-story h1 {
+  overflow-wrap: anywhere;
+  font-style: normal;
+}
+@media (max-width: 1100px) {
+  .availability-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .availability-day {
+    border-bottom: 1px solid var(--color-border);
+  }
+  .public-main {
+    gap: 36px;
+  }
+  .auth-layout {
+    gap: 48px;
+  }
+}
+@media (max-width: 767px) {
+  .public-header {
+    padding-block: 20px;
+  }
+  .public-header .back-link {
+    font-size: 12px;
+  }
+  .public-main,
+  .auth-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 48px;
+    min-height: 0;
+    padding-block: 32px;
+  }
+  .auth-story h1 {
+    font-size: 44px;
+  }
+  .auth-story {
+    display: none;
+  }
+  .auth-card .panel-body {
+    padding: 24px;
+  }
+  .public-footer {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .availability-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .availability-day {
+    border-right: 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 16px;
+    padding: 20px;
+  }
+  .availability-day legend,
+  .availability-day > button {
+    grid-column: 1/-1;
+  }
+  .availability-day legend {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .availability-help {
+    padding-inline: 4px;
+  }
+  .availability-actions,
+  .availability-save {
+    padding: 16px;
+  }
+  .week-select-form > .muted {
+    padding-top: 0;
+  }
+  .php-sidebar {
+    position: relative !important;
+    inset: auto !important;
+    width: auto !important;
+    min-height: 0 !important;
+    padding: 16px !important;
+  }
+  .php-sidebar .sidebar-nav {
+    display: flex;
+    flex-direction: row;
+    overflow: auto;
+    margin-top: 16px;
+  }
+  .php-sidebar .nav-item {
+    white-space: nowrap;
+  }
+  .php-sidebar .sidebar-label,
+  .php-sidebar .sidebar-bottom {
+    display: none;
+  }
+  .app-shell:has(.php-sidebar) {
+    display: block;
+  }
+  .php-sidebar + .workspace {
+    margin: 0 !important;
+    width: 100% !important;
+  }
+  .public-intro .btn {
+    white-space: nowrap;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .collapsing {
+    transition: none !important;
+  }
+}
+.workflow-number {
+  color: var(--color-accent-ink);
+}
+.auth-card .notice,
+.availability-page > .notice {
+  display: block;
+}
+@media (max-width: 420px) {
+  .availability-day {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .availability-cell {
+    display: grid;
+    grid-template-columns: minmax(90px, 0.9fr) minmax(0, 1.1fr);
+    gap: 12px;
+    align-items: center;
+  }
+  .availability-cell label {
+    margin-bottom: 0;
+  }
+  .availability-cell .form-select {
+    padding-right: 8px;
+  }
+}
+@media (max-width: 375px) {
+  .availability-cell {
+    display: block;
+  }
+  .availability-cell label {
+    margin-bottom: 12px;
+  }
+}
+.demo-accounts-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.demo-accounts-head h2 {
+  font-size: 20px;
+  margin: 0 0 6px;
+}
+.demo-accounts-head p {
+  font-size: 14px;
+  margin: 0;
+}
+.demo-account-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 12px;
+}
+.demo-account-list form {
+  margin: 0;
+}
+.demo-account {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 14px;
+  text-align: left;
+  color: var(--color-text);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-control);
+  cursor: pointer;
+  transition: border-color var(--dur-control) var(--ease-out), background var(--dur-control) var(--ease-out);
+}
+.demo-account:hover {
+  background: var(--color-elevated);
+  border-color: var(--color-border-strong);
+}
+.demo-account:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+.demo-account-avatar {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  background: var(--color-accent-soft);
+  color: var(--color-accent-ink);
+  font-size: 12px;
+  font-weight: 600;
+}
+.demo-account-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  flex: 1;
+}
+.demo-account-text strong {
+  font-size: 14px;
+  font-weight: 600;
+}
+.demo-account-text span {
+  font-size: 12px;
+  color: var(--color-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.demo-account-go {
+  color: var(--color-muted);
+}
+.demo-account:hover .demo-account-go {
+  color: var(--color-text);
+}
+.demo-accounts {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+.demo-accounts-error {
+  margin-bottom: 16px;
+}
+.demo-account-lead {
+  border-color: var(--color-accent);
+  background: var(--color-accent-soft);
+}
+@media (max-width: 575.98px) {
+  .demo-accounts-head {
+    flex-direction: column;
+  }
+  .demo-account-list {
+    grid-template-columns: 1fr;
+  }
+}

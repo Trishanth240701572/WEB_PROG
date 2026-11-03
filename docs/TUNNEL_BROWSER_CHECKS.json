@@ -1,0 +1,29 @@
+{
+  "url": "https://circuits-foster-ability-tournament.trycloudflare.com",
+  "executedAt": "2026-10-21T12:03:53.735Z",
+  "checks": [
+    {
+      "origin": "https://circuits-foster-ability-tournament.trycloudflare.com",
+      "status": "passed",
+      "homeStatus": 200,
+      "signInPageRendered": true,
+      "secureCookie": true,
+      "httpOnly": true,
+      "sameSite": "Lax",
+      "protectedWorkspaceRedirectsToLogin": true
+    },
+    {
+      "origin": "http://127.0.0.1:8000",
+      "status": "passed",
+      "homeStatus": 200,
+      "signInPageRendered": true,
+      "secureCookie": false,
+      "httpOnly": true,
+      "sameSite": "Lax",
+      "protectedWorkspaceRedirectsToLogin": true
+    }
+  ],
+  "authenticatedPublicSignIn": "Not attempted: automatic approval review rejected submitting stored credentials to the external tunnel URL.",
+  "status": "passed",
+  "pageErrors": []
+}

@@ -1,0 +1,76 @@
+{
+  "results": [
+    {
+      "name": "Public introduction and PHP sign-in render without broken local assets",
+      "status": "passed"
+    },
+    {
+      "name": "Availability DOM controls save through PHP and persist after reload",
+      "status": "passed"
+    },
+    {
+      "name": "Published desktop roster opens a keyboard-trapped duty drawer and restores focus",
+      "status": "passed"
+    },
+    {
+      "name": "Mobile agenda, navigation focus, reduced motion and 200% equivalent layout are usable",
+      "status": "passed"
+    },
+    {
+      "name": "Supervisor coverage shows separate staffing and technician gaps; incomplete publish is rejected",
+      "status": "passed"
+    },
+    {
+      "name": "Candidate explanations and two-direction preview submit a real exchange without changing owners",
+      "status": "passed"
+    },
+    {
+      "name": "Colleague acceptance leaves the roster unchanged, then supervisor approval exchanges both owners",
+      "status": "passed"
+    },
+    {
+      "name": "Workload Canvas, table and exported CSV use the same selected report scope",
+      "status": "passed"
+    },
+    {
+      "name": "Asia/Kolkata, UTC and New York browser settings display identical institution duty times",
+      "status": "passed"
+    },
+    {
+      "name": "A specifically rejected CSRF token refreshes once and saves notification read status",
+      "status": "passed"
+    },
+    {
+      "name": "Empty states, session expiry and direct hash refresh render clear destinations",
+      "status": "passed"
+    },
+    {
+      "name": "Structured temporary server errors render an actionable recovery state",
+      "status": "passed"
+    }
+  ],
+  "errors": [],
+  "browser": "156.0.8078.80",
+  "screenshots": [
+    "01-introduction-desktop.png",
+    "02-login-desktop.png",
+    "03-availability-mobile.png",
+    "04-roster-desktop.png",
+    "05-roster-mobile.png",
+    "06-draft-coverage-desktop.png",
+    "07-blocked-candidates-desktop.png",
+    "08-approval-comparison-desktop.png",
+    "09-approval-comparison-mobile.png",
+    "10-reports-desktop.png",
+    "11-reports-mobile.png",
+    "12-empty-state-mobile.png",
+    "13-error-state-desktop.png",
+    "14-login-error-mobile.png",
+    "15-availability-narrow.png",
+    "cloudflare-block-diagnostic.png",
+    "cloudflare-preview-login.png"
+  ],
+  "executedAt": "2026-11-03T03:00:25.315Z",
+  "storeIsolation": "Unique temporary business snapshot and PHP sessions; live storage was untouched.",
+  "zoomScope": "720 CSS-pixel viewport verifies reflow equivalent to a 1440px display at 200%; the browser chrome zoom setting was not manually changed."
+}

@@ -1,0 +1,499 @@
+SHIFTSYNC — COMPLETE CODEX BUILD PROMPT
+Duty Roster Management with Coverage Validation and Approved Shift Exchanges
+
+HOW TO USE
+Create a separate ShiftSync project folder. Put this file there. Ask Codex to read it completely and implement the application. This is a build specification, not finished application source code.
+
+BEGIN MASTER PROMPT
+
+1. ROLE, GOAL, AND WORKING METHOD
+
+Act as a senior full-stack developer, product designer, and college web-programming mentor. Build a complete, runnable ShiftSync application in this workspace. Deliver actual source files, functioning PHP processing, persistent records, a premium responsive interface, meaningful verification, and clear setup instructions. Do not stop at a plan, landing page, or frontend mockup.
+
+Inspect the workspace, Git status, relevant README/package/configuration files, and applicable AGENTS.md instructions first. Preserve existing user changes. If this is an existing ShiftSync project, extend it. If CampusFest or another unrelated application is present, do not replace or rename it: create a clearly separate ShiftSync directory. Do not import real student data or existing credentials.
+
+Make a concise implementation plan and work through it. Make ordinary implementation decisions from this specification; ask only when an essential requirement, permission, or credential cannot otherwise be resolved. Respect environment permissions and required approvals. Do not deploy publicly, buy services, reset an existing data store, or disable safety controls without authorization.
+
+Maintain a concise AGENTS.md with stable architecture, conventions, and verified commands; preserve existing applicable instructions. Store this specification in docs/BUILD_SPEC.txt and maintain docs/PROGRESS.md with completed milestones, pending items, commands, and actual verification results. Keep those documents accurate enough for another session to resume. [R1]
+
+Use student-readable JavaScript, JSX, PHP, and CSS with focused functions. Explain important booking/swap rules in short comments. Do not replace working backend features with localStorage or pretend data. Clearly label deliberately seeded fictional data. Do not claim tests, screenshots, device checks, or deployments occurred unless they did.
+
+2. PROJECT SCOPE AND DOMAIN
+
+Project name: ShiftSync.
+Formal title: Duty Roster Management with Coverage Validation and Approved Shift Exchanges.
+Setting: a fictional college computer-lab support team.
+
+Build for one institution, two labs, approximately 12 fictional staff members, and one supervisor. There are exactly two application roles: staff and supervisor. The supervisor is not assigned lab duties in this version. A staff qualification such as technician is distinct from an application permission role.
+
+Staff submit availability, view published duties, request two-way exchanges, respond to incoming requests, and track decisions. Supervisors build weekly rosters, identify staffing gaps, publish complete schedules, review swaps, and export reports.
+
+The main workflow is:
+Availability -> draft roster -> coverage checks -> publication -> swap request -> colleague acceptance -> supervisor approval -> atomic assignment exchange -> notifications and history.
+
+Required differentiators:
+- Coverage validation: sufficient headcount and at least the required number of technicians for every lab/time block.
+- Explainable eligibility: show why a person or exchange is eligible or blocked.
+- Approval preview: show both assignments and coverage before and after the proposed exchange.
+
+Scope limits:
+- Monday-Friday schedules; morning 09:00-12:00 and afternoon 13:00-16:00 in Asia/Kolkata by default.
+- Manual assignments assisted by eligibility checks, not automatic roster optimization.
+- Two-way swaps within the same published week only.
+- In-app notifications, not email or SMS.
+- No payroll, biometric/GPS attendance, one-way handovers, open-shift marketplace, overnight shifts, AI scheduling, payments, employee surveillance, or multi-organization accounts.
+- No real-time attendance module. Reports show scheduled hours, not verified worked hours.
+
+3. STACK AND INTEGRATION
+
+Use semantic HTML5, external CSS, Bootstrap, vanilla JavaScript, React with JavaScript/JSX, Vite, React Router, and plain PHP. Use a supported installed PHP version, preferably PHP 8.3 or newer. Check installed PHP/Node/npm versions and select compatible stable dependencies; record the versions actually tested and commit the lockfile.
+
+Persist the application through PHP file handling with private JSON storage. No MySQL or other database is required. Mention MySQL only as a possible future enhancement. Node/npm are frontend build tools, not the production backend.
+
+Do not introduce Next.js, Laravel, Express, TypeScript, Tailwind, Redux, Firebase, Supabase, GSAP, a calendar framework, or a large charting library. Build the roster with semantic HTML, CSS Grid, and small React components. Draw reports with native Canvas and equivalent HTML tables.
+
+Integration boundaries:
+- public/index.php: lightweight, polished public introduction.
+- public/login.php: PHP-rendered login form.
+- public/app.php: session-protected HTML shell loading the React application.
+- public/availability.php: a real staff availability page rendered by PHP and enhanced by external vanilla JavaScript, demonstrating DOM manipulation.
+- public/handlers/: ordinary PHP POST handlers for login/logout/availability.
+- public/api/: authenticated JSON endpoints backed by shared PHP services.
+- React owns the application root only. Vanilla JavaScript owns only the standalone PHP pages. Never mutate React-controlled elements through Bootstrap's imperative plugins. [R5]
+
+The availability page must be integrated into normal navigation with matching layout/tokens, not an isolated syllabus demo. Link to it with an ordinary link; return to the dashboard through an ordinary link. Its non-JavaScript form must work. Use one Bootstrap Collapse help panel here, with a readable fallback.
+
+Serve PHP pages, API requests, and built React assets from one origin. Use HashRouter for React routes so refresh does not require a custom server rewrite. Build into public/build/, not public/ itself. Load compiled assets through Vite's build manifest from public/app.php; do not overwrite PHP entries during builds. Follow the documentation for the installed Vite version rather than assuming a particular configuration API. [R2]
+
+Use a central base-path helper for URLs and support a documented subdirectory installation. The integrated development workflow must work with a PHP server plus compiled React assets. A frontend build watcher is optional. Do not instruct the user to run a PHP-backed app through a static-only preview server.
+
+4. VISUAL DESIGN — PREMIUM, FUNCTIONAL, NO UGLY GENERATED IMAGES
+
+Create a distinctive, calm scheduling workspace, not a generic admin template with many colorful cards. Aim for the care of a premium product website: disciplined typography, spacing, alignment, readable data, and refined interactions. Do not copy Apple's branding, proprietary assets, or exact pages.
+
+No AI-generated people, random stock photography, decorative 3D objects, gradient blobs, fake screenshots, emoji icons, or invented testimonials/statistics. This application needs no photographic imagery. Use readable initials avatars, a simple ShiftSync wordmark, and one consistent small set of locally available line icons.
+
+Default visual system:
+- Page background #0B0D13.
+- Surface #141824; elevated surface #1B2030.
+- Main text #F3F4F6; secondary text #AEB6C4.
+- Primary button #6D28D9 with white text; hover #5B21B6.
+- Subtle borders, limited shadows, no large glow effects.
+- Color + text + icon for state; never color alone.
+- System font stack, 16px ordinary reading text, approximately 14px dense table text, rarely below 12px for secondary metadata.
+- Spacing scale 4/8/12/16/24/32/48/64px.
+- Approximately 10px control corners, 16px panels, restrained card use.
+
+If a supplied approved reference is available, adapt the visual treatment to it without altering required functionality. Otherwise use the above system; do not spend time implementing a theme switcher.
+
+Public introduction: concise product heading, useful explanation, sign-in action, and an optional small HTML schedule demonstration clearly labelled Example. No fabricated live data, dead Get started button, or oversized marketing site.
+
+Application composition:
+- Compact desktop sidebar with wordmark, role-specific navigation, and user menu.
+- Header with page title, week navigation, relevant action, and notifications.
+- One dominant work area. Keep summaries secondary.
+- Desktop roster: sticky day headings and staff-name column, clear duty blocks, restrained status accents, and a detail drawer.
+- Supervisor coverage view: rows for lab/time blocks with required vs assigned people and technician count.
+- Mobile: day selector and readable agenda list, not a shrunken desktop calendar.
+- Approval view: two-person before/after comparison and explicit validation results above Approve/Reject.
+- Reports: carefully aligned table and one useful Canvas chart rather than many decorative graphs.
+
+Motion:
+- Buttons about 150ms; menus/drawers about 180-220ms; optional page entrance about 180ms.
+- Restrict animation mostly to opacity and small transforms.
+- No artificial waits, scroll hijacking, autoplay animation loops, moving cursors, or mandatory preloader.
+- Honor prefers-reduced-motion. Content remains visible if motion code fails.
+
+Accessibility:
+- One main landmark, skip link, proper headings, distinct page titles.
+- Visible focus, labelled fields, keyboard-operable roster actions, and usable focus restoration for dialogs/drawers.
+- Error summaries linked to fields; preserve valid input after errors.
+- Aim for WCAG AA contrast and practical touch targets; inspect actual colors, not just token names.
+- Route changes update title and manage focus; background refresh must not move focus.
+- Canvas charts have adjacent readable data tables.
+- Usable at 200% zoom. No page-wide mobile overflow.
+
+5. USERS, PERMISSIONS, AND PAGES
+
+Use genuine session-based accounts. Never implement a role dropdown that grants access without authentication.
+
+Staff navigation:
+- Overview: next duty, selected-week assigned hours, pending swap counts, recent notifications.
+- My availability: the integrated PHP form.
+- Weekly roster: published team schedule with only necessary work-related details.
+- My shifts: list/date filters and shift details.
+- Swap centre: outgoing/incoming requests, eligibility search, status timeline.
+- My summary: own scheduled hours and swap history.
+- Notifications and logout.
+
+Supervisor navigation:
+- Overview: coverage completion, gaps, pending approvals, actual recent changes.
+- Roster builder: select week, create blocks, assign/remove people, view gaps, publish.
+- Staff directory: read-only operational profiles and qualifications, not a full HR module. Provision accounts through CLI.
+- Approval inbox: pending/processed requests, before/after comparison, decisions.
+- Reports: coverage, scheduled workload, swap history, CSV and print.
+- Notifications and logout.
+
+Permission boundaries:
+- Staff can edit only their availability, initiate requests only from their assignments, and respond only to requests addressed to them.
+- Staff may see a published team roster's names, qualifications, locations, and times, but not coworkers' email addresses or full private availability records.
+- Eligibility responses expose only necessary results such as Unavailable for proposed block, not personal reasons.
+- Only counterparties and supervisors see a swap's private note.
+- Supervisors can see the operational availability needed for planning.
+- All authorization is enforced in PHP, not merely by hiding React buttons.
+
+6. AVAILABILITY AND CANONICAL DATES
+
+Availability is keyed by staff ID, local date, and morning/afternoon block. States are available, unavailable, and not_submitted. New cells default to not_submitted; unknown is never treated as available. Users can save a partially completed week, but only explicitly available blocks are eligible for assignment.
+
+Provide labelled controls, select-all-for-day/week actions with confirmation when overwriting existing choices, a live available-block count, and clear saved/unsaved feedback. Ordinary PHP form submission must also work. Persist only allowed fields and validate dates, block IDs, and staff ownership in PHP.
+
+Do not collect reasons for unavailability. Availability must never be changed retroactively for a started block.
+
+If a proposed availability change would make an existing assignment unavailable or unknown, reject it with the conflicting assignment identified. The staff member must request a swap or contact the supervisor. This applies to draft and published assignments so planning never silently breaks. Other future availability cells remain editable; invalidate pending swaps that become ineligible during the same saved mutation.
+
+Week keys are local Monday dates. Availability uses local date/block keys. Duty startsAt/endsAt are unambiguous UTC ISO timestamps generated by PHP from the configured timezone and block definition. Display all duty times explicitly in the institution timezone using proper formatting.
+
+Avoid parsing a bare local SQL/date string with JavaScript and then calling toISOString(). Do not let the organizer's browser timezone change the intended duty time. Test date handling in Asia/Kolkata, UTC, and America/New_York. All cutoffs use server time, never a client-supplied clock.
+
+7. DUTY SLOTS, ASSIGNMENTS, AND COVERAGE
+
+A duty slot is one lab, one local date, and one morning/afternoon period. An assignment links exactly one staff member to a duty slot. Keep assignment IDs stable; a swap exchanges their staff IDs, not their times or locations.
+
+Default requirements per slot: two people, including at least one qualified technician. Supervisors may configure small integer headcount/technician requirements while drafting; require 0 <= technicianMinimum <= headcount and headcount > 0. These are project staffing settings, not claims about legal staffing requirements.
+
+Only active staff accounts may be assigned. All staff support general lab work; the technician qualification satisfies the specialized minimum. Count each assigned person once; a technician counts toward both overall headcount and the technician subset, not as two people.
+
+Assignment checks:
+- Explicit availability for the whole block.
+- No duplicate assignment to that slot.
+- No overlapping assignment in another location.
+- No more people than the slot's requested headcount.
+- Valid date and future start time.
+- No assignment of the supervisor account.
+
+Overlap rule: startA < endB AND endA > startB. Back-to-back intervals do not overlap. Evaluate across all retained draft/published assignments, excluding the exact assignments being exchanged in a hypothetical swap.
+
+Drafts may be incomplete. Show missing people and missing technicians separately. Do not claim Fully covered merely because all headcount positions are filled.
+
+A roster is a Monday-based week with status draft or published and a version. Create its two-lab/two-block weekday slots once; do not regenerate them on each request. Publishing requires every slot to meet its full requirements, all assignments to remain eligible, and all slots to start in the future. Draft versions prevent stale edits overwriting newer changes.
+
+Keep the first version simple: after publication, block requirements, dates, locations, and assignments cannot be directly edited. Only approved swaps may exchange assignees. Explain this restriction in the UI and README. Do not add an incomplete republishing or emergency-override workflow. Past published rosters remain viewable for reports.
+
+The staff roster shows only published weeks. The supervisor can inspect drafts. Staff hours reports count published assignments by default and clearly distinguish any draft planning totals.
+
+8. SWAP STATE MACHINE AND ELIGIBILITY
+
+Implement two-way swaps only, within the same published week, between two different active staff members and two distinct, non-overlapping future time blocks. Do not offer exchanges of identical time windows or exchanges with oneself.
+
+States:
+- awaiting_colleague
+- awaiting_supervisor
+- approved
+- declined
+- rejected
+- withdrawn
+- expired
+- invalidated
+
+Transitions:
+- The owner of assignment A selects colleague B's assignment and submits a request: awaiting_colleague.
+- Only B can accept to awaiting_supervisor or decline to declined.
+- Only the requester can withdraw an awaiting request before final approval.
+- Only the supervisor can approve or reject an accepted request. Rejection requires a short reason.
+- Expired/invalidated/declined/rejected/withdrawn/approved records are terminal and remain in history.
+
+Neither submission nor colleague acceptance changes the roster.
+
+At most one nonterminal, nonexpired request may reference an assignment, whether incoming or outgoing. Enforce this inside the storage lock. Do not create hidden cross-request conflicts. The user can withdraw before selecting another exchange.
+
+Candidate search and preview:
+- List useful eligible candidates and a limited list of blocked candidates with reasons.
+- Validate BOTH people in the post-swap state, not just the person receiving the first shift.
+- Remove the two old allocations hypothetically, insert the exchanged staff, then validate availability, overlaps, duplicates, account activity, and requirements in BOTH affected duty slots.
+- Recompute technician coverage: swapping a technician for a general assistant must not leave either slot short.
+- Show assignments, location/time, qualification requirements, conflicts, and scheduled hours before/after. Fixed equal-duration blocks may leave weekly hours unchanged; say so instead of inventing improvements.
+
+A request expires when server time reaches the earlier duty start. Derive expired status on reads and exclude expired records from pending counts/reservations. Persist expiration cleanup during relevant mutations; GET/poll requests must not silently rewrite the store. No cron job is required for correct eligibility.
+
+Record the two original assignment owners and assignment versions in the request. Revalidate at submission, colleague acceptance, and final approval. If ownership/version has changed, the request is invalidated rather than applied to different assignments. Availability changes that invalidate an active request generate explanatory notices.
+
+9. ATOMIC FINAL APPROVAL AND HISTORY
+
+One approval must perform all of the following under one exclusive storage lock:
+- Verify authenticated supervisor, CSRF, request ownership/state, and current request version.
+- Confirm the colleague accepted and both duties are still future/published.
+- Confirm original assignment owners and versions still match.
+- Recompute the hypothetical exchanged roster and all eligibility/coverage checks.
+- Exchange the staff IDs of both assignments and increment their versions and roster version.
+- Mark the request approved with decision actor/time.
+- Append one before/after audit entry and in-app notifications for the affected staff.
+- Save the complete next state successfully before returning success.
+
+If any check or write fails, neither assignment changes. Repeated approval of an already approved request returns its saved result without exchanging the staff again or duplicating notifications/history. Approval cannot be simulated through a status update that omits the actual roster changes.
+
+For request creation, use a server-validated operation ID bound to the authenticated requester and payload. Exact retries return the existing request; mismatched reuse is a conflict. Validate first and only consume a new key when creation commits. Disable duplicate clicks as a UX aid, never as the sole protection.
+
+Do not cache approval eligibility as truth. A visible green preview is advisory until PHP validates the current state at final commit. Give meaningful messages for stale requests, expired shifts, lost eligibility, and temporarily unavailable storage.
+
+10. STORAGE, SECURITY, AND ERRORS
+
+Use one private storage/state.json business snapshot containing schemaVersion, revision, counters, users, availability, rosters, dutySlots, assignments, swapRequests, notifications, auditLog, and bounded operation-ID mappings. User records may contain password hashes but must never be serialized wholesale to clients. Keep throttle bookkeeping separate so failed logins do not churn roster history.
+
+All business readers/writers cooperate through one stable storage/state.lock file, distinct from the replaceable JSON file. Use shared locks for reads and an exclusive lock covering the complete read/validate/check/update/save operation. [R3]
+
+Validate existing JSON and invariants. Unexpectedly missing or malformed state fails safely; never replace it silently with empty demo data. Write the complete next JSON to a same-directory temporary file, verify writes/flush/close, and replace the original only on successful supported replacement. On replacement failure preserve the original; do not delete it to force success. Release locks/handles in finally paths and provide a bounded timeout/retry response.
+
+Document a single-server, persistent local-filesystem design; do not claim distributed scalability or database-grade crash durability. Provide explicit backup and restore CLI utilities. Seeding refuses to overwrite an existing store unless a clearly named reset option is intentionally used.
+
+Security:
+- Provision accounts through a CLI command; password_hash/password_verify; no reusable default production passwords.
+- Session-based authentication, regeneration after login, strict/cookie-only sessions, HttpOnly and SameSite cookies, Secure on HTTPS.
+- Server-enforced idle/absolute expiry and logout. Polls must not keep idle sessions alive.
+- CSRF tokens for all state-changing actions including login/logout/availability, and no state-changing GET endpoints.
+- Client can refresh a specifically rejected CSRF token and retry once only when that rejection guaranteed no mutation. Never blindly replay ambiguous network failures.
+- Reject forged staff IDs, roles, qualifications, decision actors, statuses, timestamps, and claimed coverage totals.
+- Appropriate server-side escaping; textContent for DOM text; ordinary escaped JSX. No user text through innerHTML/dangerouslySetInnerHTML.
+- Bound input sizes; generic login failures and sensible session/IP throttles that do not block an entire classroom sharing an address.
+- Never put passwords, tokens, session IDs, or private records into URLs, logs, public exports, or frontend bundles.
+- Return sanitized per-role data and Cache-Control: no-store for authenticated responses.
+- Release PHP session write locks promptly before longer storage operations; use a consistent lock order.
+
+Suggested JSON response format:
+Success: { ok: true, data: ..., meta: { revision, serverTime } }
+Failure: { ok: false, error: { code, message, fields }, meta: { serverTime } }
+
+Use appropriate HTTP statuses, such as 401 unauthenticated, 403 unauthorized/CSRF, 409 stale/conflicting state, 422 invalid fields, 429 throttled, and 503 storage unavailable. Missing authentication must not become a generic forever-loading UI.
+
+11. REACT, REPORTS, NOTIFICATIONS, AND API
+
+Use reusable components such as AppLayout, WeekNavigator, RosterGrid, AgendaList, DutyBlock, CoverageBadge, StaffPicker, ShiftDrawer, SwapComparison, EligibilityChecklist, RequestTimeline, ApprovalPanel, CanvasWorkloadChart, DataTable, EmptyState, ErrorState, and ConfirmDialog.
+
+Use state, props, hooks, and a small API hook with abort cleanup and explicit loading/error handling. Keep server records authoritative. Preserve forms and focus during background updates. Handle stale responses so an old request does not replace a newly selected week's results.
+
+Include one genuinely useful class component, NextShiftCountdown, demonstrating constructor, render, setState, componentDidMount, componentDidUpdate on target change, and componentWillUnmount cleanup. Most components remain functions. Demonstrate prop validation through an explicitly called JavaScript validator; do not rely on React 19 automatically running legacy .propTypes. [R4]
+
+Use React Developer Tools during development when available and explain state/props examples in the viva guide.
+
+Suggested React routes:
+/overview, /roster, /my-shifts, /swaps, /swaps/new, /swaps/:id, /summary, /notifications, /manage/roster, /manage/staff, /manage/approvals, /manage/reports.
+The availability navigation item links to the actual PHP availability page.
+
+Provide thin PHP endpoints for session/login/logout, availability, roster queries/draft creation/assignments/publication, staff directory, eligible exchanges, swap creation/response/withdrawal/decision, notification read status, summaries, and CSV export. A small centralized router is acceptable; no framework required. Shared services own the rules rather than copying them between handlers.
+
+Reports:
+- Select roster week and optionally lab. Default to published data.
+- Coverage report: expected and assigned headcount/technician count for each selected block.
+- Workload report: scheduled duties and hours per staff member; include zero-assignment active staff with clear labels.
+- Swap history: scope by the roster week, state, and involved staff; explain the date meaning.
+- A two-way exchange changes owners but not the number of filled places; do not falsely increase coverage totals.
+- Canvas workload chart and equivalent table must use the same data as CSV/print.
+- Staff may export only their own summary; supervisors may export selected operational reports.
+- Use fputcsv, correct escaping, and a documented tested policy neutralizing spreadsheet-formula-like user values. Exclude credentials and private notes unless specifically needed and authorized.
+
+Notifications are saved in-app records. Publish notices, swap submission/acceptance/decision/withdrawal/expiry notices, and invalidation notices must match real transitions and not duplicate on retries. Batch publication creates one appropriate notice per affected staff member, not one per duty.
+
+Refresh after successful mutations. Poll visible read-only summaries/notifications about every 15 seconds, pause when hidden, and clean up on unmount. Provide manual refresh and honest last-updated text. Polling must not reset forms, move focus, extend inactivity expiry, or be described as instant server push.
+
+12. FILE ORGANIZATION
+
+Use a small, understandable structure similar to:
+
+ShiftSync/
+  AGENTS.md
+  README.md
+  .gitignore
+  config/
+    app.php
+    local.example.php
+  public/
+    index.php
+    login.php
+    app.php
+    availability.php
+    handlers/
+    api/
+    reports/
+    assets/css/{tokens,base,components,motion,print}.css
+    assets/js/availability.js
+    assets/vendor/
+    build/                     generated React assets only
+  src/
+    bootstrap.php
+    Store.php
+    Auth.php
+    Csrf.php
+    Validation.php
+    Time.php
+    AvailabilityService.php
+    RosterService.php
+    CoverageService.php
+    SwapService.php
+    ReportService.php
+    NotificationService.php
+    Response.php
+  storage/                     private, outside web document root
+  frontend/
+    package.json
+    package-lock.json
+    vite.config.js
+    src/main.jsx
+    src/App.jsx
+    src/routes.jsx
+    src/components/
+    src/pages/
+    src/hooks/
+    src/services/api.js
+    src/utils/
+    src/styles/
+  scripts/
+    check-environment.php
+    seed-demo.php
+    create-user.php
+    backup.php
+    restore.php
+  tests/
+    run.php
+    fixtures/
+    concurrency/
+    e2e/
+  docs/
+    BUILD_SPEC.txt
+    PROGRESS.md
+    ARCHITECTURE.md
+    DATA_MODEL.md
+    API.md
+    SYLLABUS_MAPPING.md
+    VIVA_GUIDE.md
+    TEST_RESULTS.md
+    DEMO_SCRIPT.md
+    DEPLOYMENT.md
+    screenshots/
+
+Combine trivial files when that improves readability. Do not create empty architectural layers merely to match the tree. Ignore live private records, credentials, local overrides, generated temp files, and dependency folders in Git. Keep fictional fixtures separate from the live store.
+
+13. SAMPLE DATA, SETUP, AND HOSTING
+
+Seed 12 fictional staff with a feasible mix of technicians and assistants and one supervisor account. Generate local demo passwords securely and show them once or save them only in a clearly ignored private setup receipt. Never commit them. Production deployment must not reuse demonstration credentials.
+
+Seed at least:
+- One future published week with complete valid coverage.
+- One subsequent draft week with missing staff and a missing-technician example.
+- One eligible exchange between compatible technicians.
+- One exchange blocked by availability, one by overlap, and one by technician coverage.
+- Distinct examples of pending-colleague, pending-supervisor, approved, rejected, and expired history.
+- An unassigned active person and long names for layout testing.
+
+All published fixture assignments must actually satisfy the rules. Do not place an ineligible seeded request in an actionable state. A historical approved fixture must agree with current assignment ownership/audit history.
+
+Use an explicit --week-start Monday option; default to the next complete future work week. Once seeded, dates remain stable. Expired historical fixtures use past rosters. A test clock override belongs only to explicit test/local configuration, never a public request parameter. CLI seeding must refuse accidental overwrites.
+
+Provide commands matching the implemented repository. Intended flow:
+- Check PHP and Node/npm prerequisites.
+- Install frontend dependencies with npm install initially to create the lockfile; document npm ci thereafter.
+- Build React and prepare local Bootstrap assets.
+- Run PHP environment check and deliberate demo seeding/account setup.
+- Start php -S 127.0.0.1:8000 -t public.
+- Open the PHP-served public/login/application URLs.
+
+Document Windows/XAMPP and a Unix-like environment. For XAMPP/Apache point the document root to public/, not the repository root exposing storage. Include a subdirectory smoke check if documenting that option. PHP's development server is for local development, not production deployment.
+
+Deployment needs PHP, HTTPS, private persistent writable storage, and a single application server for this design. React can be built locally; normal production requests need no Node server. Do not claim static-only or ephemeral hosting will persist this backend. No deployment is authorized by this build brief alone.
+
+14. IMPLEMENTATION PHASES
+
+Phase 1: Inspect environment; define records, stable IDs, rules, timezone helpers, authenticated shells, design tokens, and locked storage. Write initial rule tests.
+Phase 2: Complete availability -> draft roster -> coverage -> publish with real persistent records and permissions.
+Phase 3: Complete request -> colleague response -> supervisor preview/decision -> atomic exchange -> notifications/history.
+Phase 4: Complete reports, CSV, Canvas, public introduction, premium responsive styling, accessibility, motion, and error states.
+Phase 5: Run tests, review actual desktop/mobile output, fix problems, verify setup from a clean test store, and complete the handover.
+
+Do not leave backend integration until after creating elaborate static mockups. Prove one real vertical workflow early, then polish it. A build passing alone is not evidence that the application works.
+
+15. ACCEPTANCE TESTS
+
+Use isolated temporary stores and controlled time. Never test destructive cases against the user's live data. Run PHP syntax checks, meaningful business-rule tests, the React production build, and integration/browser checks where available.
+
+Required behavioral checks:
+1. Staff and supervisor logins persist correctly; unauthenticated and unauthorized endpoints fail.
+2. Forged staff/role IDs cannot change another person's availability or approve a swap.
+3. Availability saves and reloads; unknown/unavailable blocks cannot be assigned.
+4. Availability changes cannot invalidate an existing assignment; changes to free incoming blocks can invalidate pending swaps with a notice.
+5. Duplicate/overlapping assignments fail across labs; adjacent intervals succeed.
+6. Two general assistants satisfy headcount but fail a one-technician minimum.
+7. Incomplete/invalid drafts cannot publish; a valid future week publishes and becomes visible to staff.
+8. Stale draft versions cannot overwrite newer edits; published slots cannot be directly rewritten.
+9. Candidate evaluation checks both people and both affected coverage groups.
+10. Creating and accepting a request do not change assignment owners.
+11. Decline, reject, and withdrawal preserve the original roster and retain history.
+12. Approval exchanges both staff IDs exactly once and saves audit/notices together.
+13. Repeat approval does not exchange them back or duplicate side effects.
+14. Only one active request can involve an assignment; concurrent creation is handled safely.
+15. Expiry, changed assignment versions, or lost eligibility prevent a stale approval.
+16. Wrong actor cannot accept/reject/withdraw another person's request.
+17. Failed writes, malformed state, and lock timeout preserve the previous valid store and show honest errors.
+18. Two independent workers approving the same request cannot produce a double swap or corrupted JSON. Use independent processes against the same store, not merely requests queued by one single-threaded development server.
+19. Every report/chart/table/CSV uses consistent week/lab scope, counts people once, excludes secret data, and labels scheduled rather than worked hours.
+20. Formula-like exported text is neutralized and correctly quoted.
+21. Missing/invalid CSRF, expired login, and safe token refresh paths behave correctly without replaying ambiguous mutations.
+22. Asia/Kolkata/UTC/New York browser settings do not alter intended duty dates/times.
+23. Seed/reset refuses unintended overwrites. GET requests do not mutate business state.
+24. Public/staff responses never expose password hashes, full private availability, or unauthorized notes.
+
+Browser review:
+- Inspect login, availability, roster, blocked candidate, approval comparison, reports, and error/empty states.
+- Review at approximately 390px, 768px, and 1440px wide, plus a narrow 360px check.
+- Verify no clipped names, sticky-panel overlaps, unreadable duty blocks, broken assets, or page-wide overflow.
+- Keyboard-only navigation, visible focus, dialog Escape/focus restoration, reduced motion, and 200% zoom.
+- Mobile agenda is genuinely readable; do not shrink the desktop grid.
+- Direct hash-route refresh, back navigation, form preservation, double-click prevention, and notification updates.
+- Inspect actual screenshots when browser tools are available; distinguish source review from executed browser checks.
+
+Use browser automation as a development tool when available. Record pass/fail/skipped/blocked results with actual commands. If tools are missing, complete independent work, give the exact remaining check, and do not fabricate results.
+
+16. SYLLABUS MAPPING AND FINAL HANDOVER
+
+Explain with real file/function references:
+- HTML: semantic layouts, lists, forms, input controls, fieldsets, tables, and meaningful local icons/images where used.
+- CSS: selectors, cascade after Bootstrap, fonts/colors/borders, spacing, box model, responsive and print layouts.
+- JavaScript: variables, functions, objects, loops, events, validation, external files, vanilla availability DOM updates, Canvas drawing.
+- PHP: constants, conditions, arrays, strings, functions, includes, form processing, file handling, and HTML generation.
+- Bootstrap: grids, navigation, forms, tables, Flexbox utilities, and one public/PHP-owned plugin.
+- React: JSX, components, props, explicit validation, state, hooks, routes, styles, class constructor/lifecycle cleanup, developer tools, and production build.
+- Hosting: PHP document root, compiled React assets, base paths, private storage, and local startup.
+
+Document supporting additions such as Fetch/JSON, sessions, CSRF, file locks, version checks, and timezones separately. Explain why this is a single-host academic system, not a payroll or enterprise scheduling product.
+
+Final handover must include complete source, exact install/build/start/test commands, account provisioning, route map, storage/backup/reset procedures, architecture/data/API documentation, a syllabus mapping, viva guide, actual test evidence, and reviewed screenshots where available.
+
+Evaluator demo, approximately 5-7 minutes:
+1. Staff sets availability.
+2. Supervisor fixes a coverage gap and publishes the draft week.
+3. Staff opens a duty and sees eligible and blocked exchanges with reasons.
+4. Staff submits a swap; colleague accepts; demonstrate the roster is unchanged.
+5. Supervisor reviews before/after checks and approves.
+6. Reload the roster to show both changes persisted, with notifications and history.
+7. Display workload/coverage report and export the same scope to CSV.
+
+Finish with honest limitations and concrete remaining blockers. Do not substitute a claimed completion summary for unfinished required flows. Start implementation now and work through the phases.
+
+END MASTER PROMPT
+
+TECHNICAL REFERENCES
+These are primary documentation references for integration details. Product scope, staffing rules, design tokens, timings, and acceptance criteria above are project decisions, not claims copied from these sources.
+
+[R1] OpenAI — Codex project instructions / AGENTS.md
+https://developers.openai.com/codex/guides/agents-md/
+https://developers.openai.com/cookbook/examples/codex/iterating-development-workflows-with-codex
+
+[R2] Vite — Backend integration and build manifest
+https://vite.dev/guide/backend-integration
+
+[R3] PHP — flock and cooperative file locking
+https://www.php.net/manual/en/function.flock.php
+
+[R4] React — React 19 upgrade guide, removed automatic propTypes checks
+https://react.dev/blog/2024/04/25/react-19-upgrade-guide
+
+[R5] Bootstrap — JavaScript and framework integration
+https://getbootstrap.com/docs/5.3/getting-started/javascript/
